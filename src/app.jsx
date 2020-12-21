@@ -1,18 +1,11 @@
 import "./App.css";
 import React from "react";
-import ReactDOM from "react-dom";
+import Login from "./components/login/login";
 
-function App() {
+function App({ authService }) {
   return (
     <>
-      <h1>hello</h1>;
-      {ReactDOM.createPortal(
-        <div>
-          <p>안녕하세요</p>
-          <p>실전 리액트 프로그램입니다.</p>
-        </div>,
-        document.getElementById("something")
-      )}
+      <Login authService={authService}></Login>
     </>
     //createPortal은 모달으 사용할때 사용한다
   );
