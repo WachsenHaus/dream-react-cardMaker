@@ -62,9 +62,7 @@ const Maker = ({ authService }) => {
   const updateCard = (card) => {
     console.log(card);
   };
-  const deleteCard = (card) => {
-    console.log(card);
-  };
+  const deleteCard = (card) => {};
   return (
     <section className={styles.maker}>
       <Header onLogout={onLogout} />
