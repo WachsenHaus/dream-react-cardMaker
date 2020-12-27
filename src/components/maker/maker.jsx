@@ -60,7 +60,7 @@ const Maker = ({ authService }) => {
     setCards(updated);
   };
   const updateCard = (card) => {
-    console.log(card);
+    // console.log(card);
   };
   const deleteCard = (card) => {};
   return (
