@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./card_edit_form.module.css";
 import Button from "../button/button";
-import ImageFileInput from "../image_file_input/image_file_input";
 
 const CardEditForm = ({ FileInput, card, updateCard, deleteCard }) => {
   const nameRef = useRef();

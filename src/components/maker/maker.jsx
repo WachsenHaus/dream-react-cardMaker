@@ -15,7 +15,16 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
   const onLogout = () => {
     authService.logout();
   };
+  useEffect(() => {
+    if (!userId) return;
 
+    const stopSync = cardRepository.syncCards(userId, (cards) => {
+      setCards(cards);
+    });
+    return () => {
+      stopSync();
+    };
+  }, [userId, cardRepository]);
   useEffect(() => {
     authService.onAuthChange((user) => {
       if (user) {
@@ -24,7 +33,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         history.push("/");
       }
     });
-  });
+  }, [authService, userId, history]);
 
   const createOrupdateCard = (card) => {
     //set시점에 이전값으로 작업을 진행함.
