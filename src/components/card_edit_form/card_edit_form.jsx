@@ -4,14 +4,16 @@ import Button from "../button/button";
 import ImageFileInput from "../image_file_input/image_file_input";
 
 const CardEditForm = ({ card, updateCard, deleteCard }) => {
-  const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
   const themeRef = useRef();
   const titleRef = useRef();
   const emailRef = useRef();
+  const messageRef = useRef();
   const { name, company, title, email, message, theme, fileName, fileUrl } = card;
-  const onSubmit = () => {};
+  const onSubmit = (event) => {
+    deleteCard(card);
+  };
   const onChange = (event) => {
     if (event.currentTarget == null) {
       return;
@@ -23,7 +25,7 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
     });
   };
   return (
-    <form ref={formRef} className={styles.form}>
+    <form className={styles.form}>
       <input
         ref={nameRef}
         className={styles.input}
@@ -40,7 +42,13 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
         value={company}
         onChange={onChange}
       />
-      <select ref={themeRef} className={styles.select} name="theme" value={theme}>
+      <select
+        ref={themeRef}
+        className={styles.select}
+        name="theme"
+        value={theme}
+        onChange={onChange}
+      >
         <option value="light">Light</option>
         <option value="dark">Dark</option>
         <option value="colorful">Colorful</option>
@@ -63,6 +71,7 @@ const CardEditForm = ({ card, updateCard, deleteCard }) => {
       />
       <textarea
         className={styles.textarea}
+        ref={messageRef}
         name="message"
         value={message}
         onChange={onChange}
